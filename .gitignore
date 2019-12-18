@@ -1,0 +1,8 @@
+*
+!.gitignore
+!docker-compose.yml
+!docker
+!docker/ssl
+!docker/php72_apache.docker
+!docker/supervisord.conf
+!docker/xdebug.ini
