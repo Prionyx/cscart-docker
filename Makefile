@@ -8,6 +8,13 @@ docker-build:
 	docker-compose up --build -d
 
 perm:
+ifdef n
+	sudo chmod -R 777 $(n)
+else
+	@echo 'Нужно указать имя магазина'
+endif
+
+perm-docker:
 	sudo chmod -R 777 docker
 
 cscart-project:
