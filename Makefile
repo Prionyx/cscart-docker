@@ -38,7 +38,7 @@ cscart-install:
 ifdef n
 ifdef v
 	docker exec cscart_docker_web_1 sh -c "cd html && make docker-cscart-install v=$(v) n=$(n)"
-	google-chrome-stable "http://localhost/$(n)/admin.php"
+	chromium "http://localhost/$(n)/admin.php"
 else
 	@echo 'Нужно указать версию CS-Cart'
 endif

@@ -35,6 +35,16 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --filename=composer \
+    --install-dir=/usr/local/bin && \
+    echo "alias composer='composer'" >> /root/.bashrc && \
+    composer
+
+RUN composer global require "squizlabs/php_codesniffer=*" \
+    && composer global require friendsofphp/php-cs-fixer \
+    && composer global require phpmd/phpmd
+
 COPY ./docker/ssl/server.pem /etc/apache2/ssl/server.pem
 COPY ./docker/ssl/server.key /etc/apache2/ssl/server.key
 COPY ./docker/ssl/ssl.conf /etc/apache2/sites-enabled/ssl.conf
